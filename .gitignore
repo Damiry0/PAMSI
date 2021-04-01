@@ -12,3 +12,4 @@ CTestTestfile.cmake
 *.iml
 *.cbp
 *.txt
+/.idea/*

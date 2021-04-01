@@ -1,60 +1,35 @@
-#include <vector>
+
 #include <iostream>
 #include "../inc/priority_queue.h"
 
-template<typename Comparable>
-BinaryHeap<Comparable>::BinaryHeap(int capacity) {
-
+template<typename T>
+PriorityQueue<T>::PriorityQueue() {
+    _Head=_Tail=NULL;
 }
 
-template<typename Comparable>
-BinaryHeap<Comparable>::BinaryHeap(const std::vector<Comparable> &items) {
-
+template<typename T>
+PriorityQueue<T>::~PriorityQueue() {
+    while (_Head) Dequeue();
 }
 
-template<typename Comparable>
-bool BinaryHeap<Comparable>::isEmpty() const {
+template<typename T>
+bool PriorityQueue<T>::Empty() const {
     return false;
 }
 
-template<typename Comparable>
-const Comparable &BinaryHeap<Comparable>::findMin() const {
-  //  return <#initializer#>;
-}
-
-template<typename Comparable>
-void BinaryHeap<Comparable>::insert(const Comparable &x) {
+template<typename T>
+void PriorityQueue<T>::Insert(T) const {
 
 }
 
-template<typename Comparable>
-void BinaryHeap<Comparable>::insert(Comparable &&x) {
-
+template<typename T>
+bool PriorityQueue<T>::Enqueue() const {
+    return false;
 }
 
-template<typename Comparable>
-void BinaryHeap<Comparable>::deleteMin() {
-
-}
-
-template<typename Comparable>
-void BinaryHeap<Comparable>::deleteMin(Comparable &minItem) {
-
-}
-
-template<typename Comparable>
-void BinaryHeap<Comparable>::makeEmpty() {
-
-}
-
-template<typename Comparable>
-void BinaryHeap<Comparable>::buildHeap() {
-
-}
-
-template<typename Comparable>
-void BinaryHeap<Comparable>::percolateDown(int hole) {
-
+template<typename T>
+bool PriorityQueue<T>::Dequeue() const {
+    return false;
 }
 
 
