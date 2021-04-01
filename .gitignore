@@ -11,5 +11,5 @@ CTestTestfile.cmake
 *.xml
 *.iml
 *.cbp
-*.txt
+CMakeLists.txt
 /.idea/*

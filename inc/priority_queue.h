@@ -4,18 +4,19 @@
 template<typename T>
 class PriorityQueue {
 private:
-    T *_Head;
-    T *_Tail;
-    unsigned int _Size;
-    unsigned int _CurrentSize;
+    T *_head;
+    T *_tail;
+    unsigned int _size;
+    unsigned int _currentSize;
 
 public:
-    PriorityQueue();
+    PriorityQueue(unsigned int size);
     ~PriorityQueue();
     bool Empty() const;
-    void Insert(T) const;
+    void Insert(unsigned int k, T x) const;
     bool Enqueue() const;
     bool Dequeue() const;
+    void Print() const;
 
 
 
