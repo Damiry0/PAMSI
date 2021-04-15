@@ -13,3 +13,10 @@ CTestTestfile.cmake
 *.cbp
 CMakeLists.txt
 /.idea/*
+
+*.aux
+*.fdb_latexmk
+*.toc
+*.synctex.gz
+*.fls
+*.log
