@@ -3,20 +3,31 @@
 
 template<typename T>
 PriorityQueue<T>::PriorityQueue(unsigned int size) {
-    _head= _tail=NULL;
+    _heap=NULL;
     _currentSize=0;
     _size=size;
 }
 
 template<typename T>
 PriorityQueue<T>::~PriorityQueue() {
-    while (_head) Dequeue();
+    while (_heap) Dequeue();
 }
 
 template<typename T>
 bool PriorityQueue<T>::Empty() const {
-    return !_size;
+    return _size==0 ? 1:0;
 }
+
+template<typename T>
+int PriorityQueue<T>::Size() const {
+    return _currentSize;
+}
+
+template<typename T>
+bool PriorityQueue<T>::Full() const {
+    return _currentSize==_size ? 1:0;
+}
+
 
 template<typename T>
 bool PriorityQueue<T>::Enqueue() const {
@@ -33,13 +44,6 @@ void PriorityQueue<T>::Insert(unsigned int k, T x) const {
 
 }
 
-template<typename T>
-void PriorityQueue<T>::Print() const {
-    std::cout<<"Queue:\n";
-    for (int i = 0; i < _currentSize; ++i) {
-       // std::cout<<
-    }
-}
 
 
 
