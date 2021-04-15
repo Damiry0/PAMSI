@@ -10,7 +10,7 @@ PriorityQueue<T>::PriorityQueue(unsigned int size) {
 
 template<typename T>
 PriorityQueue<T>::~PriorityQueue() {
-    while (_heap) Dequeue();
+    while (_heap) Remove();
 }
 
 template<typename T>
@@ -28,19 +28,14 @@ bool PriorityQueue<T>::Full() const {
     return _currentSize==_size ? 1:0;
 }
 
-
 template<typename T>
-bool PriorityQueue<T>::Enqueue() const {
-    return false;
+bool PriorityQueue<T>::Add(unsigned int key, T value) const {
+    if(this->Full) return false;
+
 }
 
 template<typename T>
-bool PriorityQueue<T>::Dequeue() const {
-    return false;
-}
-
-template<typename T>
-void PriorityQueue<T>::Insert(unsigned int k, T x) const {
+void PriorityQueue<T>::Print() const {
 
 }
 
