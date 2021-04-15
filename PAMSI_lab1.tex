@@ -17,6 +17,8 @@
 \usepackage{amstext}
 \usepackage{xcolor}
 \usepackage{url,textcomp}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+
 
 
 \title{Projektowanie algorytmów i metody sztucznej inteligencji - Raport 1}
@@ -31,13 +33,35 @@
 
 \tableofcontents
 \section{Wstęp}
-Grupa lab: E12-93c zmien	
+Grupa lab: E12-93c zmien
 
 Termin zajęć: PN 18:45-20:35
 
 Numer indeksu: 252936
 
-Prowadzący: Dr inż. Piotr Ciskowski 
+Prowadzący: Dr inż. Piotr Ciskowski
+
+\section{Zadanie}
+Postawionym pzed nami problemem jest wysłanie przez użytkownika A do użytkownika B wiadomości przez Internet.
+wiadomość ta powinna zostać wysłana w serii pakietów na komputer użytkownika B.
+Problem polega w tym, że pakiety mogą przychodzić z różnych przycznym w losowej kolejności do użytkownika B.
+Nasz program powinien zatem:
+\begin{enumerate}
+    \item Podzielić naszą wiadomość na szereg pakietów
+    \item Przelosować pakiety w celu zasymulowania sytuacji
+    \item Wczytać do struktury danych nasze pakiety
+    \item Przesyłać pakiety w foramcie [klucz,wartość]
+    \begin{enumerate}
+        \item klucz powininen mieć unikalną wartość
+        \item wartość powinna być dowolnego typu (użytkownik powinine mieć możliwość przesłania dowolnej wiadomości)
+    \end{enumerate}
+    \item Złączyć wiadomość w jedną,prawidłową całość i wyświetlić użytkownikowi
+\end{enumerate}
+\section{Kolejka Priorytetowa}
+Wobec postawionego problemu strukturą ADT, którą wybrałem jest kolejka priorytetowa bazowana na drzewie binarnym.
+
+
+
 
 \section{Wnioski}
 
