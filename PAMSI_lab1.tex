@@ -40,7 +40,7 @@ Termin zajęć: PN 18:45-20:35
 Numer indeksu: 252936
 
 Prowadzący: Dr inż. Piotr Ciskowski
-
+\newpage
 \section{Zadanie}
 Postawionym pzed nami problemem jest wysłanie przez użytkownika A do użytkownika B wiadomości przez Internet.
 wiadomość ta powinna zostać wysłana w serii pakietów na komputer użytkownika B.
@@ -60,6 +60,10 @@ Nasz program powinien zatem:
 \section{Kolejka Priorytetowa}
 Wobec postawionego problemu strukturą ADT, którą wybrałem jest kolejka priorytetowa bazowana na drzewie binarnym.
 \subsection{Czym jest kolejka priorytetowa?}
+Kolejka priorytetowa (ang. priority queue) jest kolejką, w której elementy są ułożone nie w kolejności wprowadzania, lecz w kolejności priorytetu.
+Każdy element kolejki posiada dodatkowe pole priority, w którym przechowuje swój priorytet – czyli ważność.
+Gwarantuje to pobieranie z kolejki jako pierwszych elementów o najwyższym priorytecie. 
+Elementy o priorytetach niższych zostaną pobrane dopiero wtedy, gdy zostaną usunięte wszystkie elementy o priorytetach wyższych.
 
 
 \subsection{Zalety i wady}
@@ -72,6 +76,9 @@ Strukturę tą wybrałem ze względu na:
 
 
 \subsection{Implementacja}
+
+
+//kod klasy reszta kodu dostepna na githubie
 \subsection{Złożoności obliczeniowe}
 Dla naszego programu zgodnie z załozeniami projektowymi zostały obliczene złożoności czasowe poszczególnych 
 funkcji naszej struktury:
@@ -97,6 +104,7 @@ uznaje, że program działa prawidłowo.
 \section{Wnioski}
 \section{Bibliografia}
 https://bradfieldcs.com/algos/trees/priority-queues-with-binary-heaps/
+https://www.hackerearth.com/practice/notes/heaps-and-priority-queues/
 
 
 \end{document}
