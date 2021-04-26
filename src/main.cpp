@@ -66,8 +66,21 @@ std::vector<std::string> SplitTxtIntoWords(std::string filename)
 int main() {
    PriorityQueue<string> queue;
    queue.enqueue("Ala ",1);
-   queue.enqueue("kota",7);
-   queue.enqueue("ma",5);
-   queue.enqueue("a kot ma ale",45);
+   queue.enqueue("kota",3);
+   queue.enqueue("ma",2);
+   queue.enqueue("a ",4);
+   queue.enqueue("Ale ",7);
+   queue.enqueue("kot ",5);
+   queue.enqueue("ma ",6);
    queue.Print();
+
+   PriorityQueue <int> queue_1;
+   queue_1.enqueue(112,1);
+   queue_1.enqueue(23,3);
+   queue_1.enqueue(2321,2);
+   queue_1.enqueue(6323,4);
+   queue_1.enqueue(21332,7);
+   queue_1.enqueue(745,5);
+   queue_1.enqueue(24,6);
+   queue_1.Print();
 }

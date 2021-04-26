@@ -121,6 +121,7 @@ Strukturę tą wybrałem ze względu na:
     
 Powyżej znajduję się klasa kolejki priorytowej, reszta kodu dostępna jest na 
 rezpozytorium na \href{https://github.com/Damiry0/PAMSI}{Githubie} lub dołączonym skompresowanym pliku.
+\newpage
 \subsection{Złożoności obliczeniowe}
 Dla naszego programu zgodnie z załozeniami projektowymi zostały obliczene złożoności czasowe poszczególnych 
 funkcji naszej struktury:
@@ -134,7 +135,8 @@ funkcji naszej struktury:
     \label{2}
 \end{figure}
 
-Tak przedstawia się reszta złożoności oblicziowych naszej struktury:
+Złożoność została policzona również dla innych metod,co można zobaczyć w tabelce poniżej:
+
 //tabelka
 
 Nasze wyniki pokrywają się z danymi dostępnymi w internecie,jak na przykład 
@@ -143,14 +145,30 @@ Nasze wyniki pokrywają się z danymi dostępnymi w internecie,jak na przykład
 
 
 \subsection{Testy}
-Za bazę naszych testów posłużyły nam "polskie copy pasty". Teksty zostały podzielone,następnie wymieszane, załadowane do strktury,
-by finalnie zostały posortowane i złączone w jedną całość w osobnym pliku wynikowym. Na poniższym przykładzie
-został zaprezentowany cykl życia naszego pliku.
+Dla bazy naszych testów zasymulowałem sytuacje w której użytkownik B otrzymuje od
+użytkownika A pakiety w złej kolejności.
+
+\begin{figure}[H]
+    \centering
+    \hspace*{-1cm}
+    \includegraphics[totalheight=8cm]{zlozonosc.jpg}
+    \caption{Złożoność obliczeniowa dla metody enqueue}
+    \label{2}
+\end{figure}
+
+Program został przetestowany również dla różnego typu elementów, co widać na 
+poniższym screenie:
+
+\begin{figure}[H]
+    \centering
+    \hspace*{-1cm}
+    \includegraphics[totalheight=8cm]{zlozonosc.jpg}
+    \caption{Złożoność obliczeniowa dla metody enqueue}
+    \label{2}
+\end{figure}
 
 
-
-Program finalnie przeszedł testy na bazie większej ilości plików i był w stanie prawidłowo odtwrzyć plik, zatem
-uznaje, że program działa prawidłowo.
+Program finalnie przeszedł testy, zatem uznaje, że program działa prawidłowo.
 
 \section{Wnioski}
 \section{Bibliografia}
