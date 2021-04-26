@@ -69,24 +69,5 @@ int main() {
    queue.enqueue("kota",7);
    queue.enqueue("ma",5);
    queue.enqueue("a kot ma ale",45);
-   std::vector<string>beka= SplitTxtIntoWords("../data/bitwa.txt");
-   for (int i = 0; i < beka.size(); i++)
-   {
-       std::cout<<beka[i]<<endl;
-   }
-   
-
-
-
-
-
-
-
    queue.Print();
-
-
-
-  
-
-
 }

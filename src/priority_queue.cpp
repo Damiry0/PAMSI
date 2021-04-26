@@ -4,53 +4,51 @@
 using namespace std;
 
 
-template<typename type>
+template<typename T>
 class PriorityQueue
 {
 	typedef struct Node
 	{
-		type field; //wartosc 
+		T field; //wartosc 
 		int key; // klucz
 		Node *nextNode; 
 	} *nodePointer;
 
-	nodePointer front;
-	nodePointer back;
-	int size=0;
-
+	nodePointer front; //wskaznik na nastepny element
+	nodePointer back; // wskaznik na poprzedni element
 public:
-	void enqueue(const type& newElement, int priority);
-	void dequeue();
-	~PriorityQueue();
 	PriorityQueue();
 	PriorityQueue(const PriorityQueue &pque);
-
-
-	bool Empty();
-	void pushBack(const type& newElement, int priority);
-	void pushFront(const type& newElement, int priority);
-	void pushFirstNode(const type& newElement, int priority);
-	void pushInside(const type& newElement, int priority);
+	~PriorityQueue();
+	void enqueue(const T& newElement, int priority);
+	void dequeue();
 	void Print();
+private:
+	bool Empty();
+	void pushBack(const T& newElement, int priority);
+	void pushFront(const T& newElement, int priority);
+	void pushFirstNode(const T& newElement, int priority);
+	void pushInside(const T& newElement, int priority);
+	
 };
 
 
-template<typename type>
-PriorityQueue<type>::PriorityQueue()
+template<typename T>
+PriorityQueue<T>::PriorityQueue()
 {
 	this->front = NULL;
 	this->back = NULL;
 }
 
-template<typename type>
-bool PriorityQueue<type>::Empty()
+template<typename T>
+bool PriorityQueue<T>::Empty()
 {
 	if(this->front == NULL && this->back == NULL) return true;
 	else return false;
 }
 
-template<typename type>
-void PriorityQueue<type>::Print()
+template<typename T>
+void PriorityQueue<T>::Print()
 {
 	if(Empty())
 	{
@@ -61,7 +59,7 @@ void PriorityQueue<type>::Print()
 		nodePointer temporary = back;
 		while(temporary!=NULL)
 		{
-			cout << "Field: " << temporary->field << "   Priority: " << temporary->key <<endl;
+			cout << "Wartość: " << temporary->field << "   Priority: " << temporary->key <<endl;
 			temporary = temporary->nextNode;
 		}
 		cout << endl;
@@ -69,8 +67,8 @@ void PriorityQueue<type>::Print()
 }
 
 
-template<typename type>
-void PriorityQueue<type>::pushFront(const type& newElement, int priority)
+template<typename T>
+void PriorityQueue<T>::pushFront(const T& newElement, int priority)
 {
 	nodePointer adder = new Node;           //
 	adder->key = priority;           		//inicjalizowanie obiektu node
@@ -82,8 +80,8 @@ void PriorityQueue<type>::pushFront(const type& newElement, int priority)
 	cout << "Enqueued element "<< newElement << " with priority " << priority << endl;
 }
 
-template<typename type>
-void PriorityQueue<type>::pushBack(const type& newElement, int priority)
+template<typename T>
+void PriorityQueue<T>::pushBack(const T& newElement, int priority)
 {
 	nodePointer adder = new Node;              //
 	adder->key = priority;             		   // creating new node to be added
@@ -94,8 +92,8 @@ void PriorityQueue<type>::pushBack(const type& newElement, int priority)
 	cout << "Enqueued element "<< newElement << " with priority " << priority << endl;
 }
 
-template<typename type>
-void PriorityQueue<type>::pushFirstNode(const type& newElement, int priority)
+template<typename T>
+void PriorityQueue<T>::pushFirstNode(const T& newElement, int priority)
 {
 	nodePointer adder = new Node;
 	adder->key = priority;
@@ -107,8 +105,8 @@ void PriorityQueue<type>::pushFirstNode(const type& newElement, int priority)
 }
 
 
-template<typename type>
-void PriorityQueue<type>::pushInside(const type& newElement, int priority)
+template<typename T>
+void PriorityQueue<T>::pushInside(const T& newElement, int priority)
 {                                   
 	nodePointer scroller = back;
 	nodePointer save = back;       // 'save' to remember last suitable scroller
@@ -126,8 +124,8 @@ void PriorityQueue<type>::pushInside(const type& newElement, int priority)
 }
 
 
-template<typename type>
-void PriorityQueue<type>::enqueue(const type& newElement, int priority)
+template<typename T>
+void PriorityQueue<T>::enqueue(const T& newElement, int priority)
 {
 	if(Empty())
 	{
@@ -155,8 +153,8 @@ void PriorityQueue<type>::enqueue(const type& newElement, int priority)
 }
 
 
-template<typename type>
-void PriorityQueue<type>::dequeue()
+template<typename T>
+void PriorityQueue<T>::dequeue()
 {
 	if(Empty())
 	{
@@ -188,8 +186,8 @@ void PriorityQueue<type>::dequeue()
 	}
 }
 
-template<typename type>
-PriorityQueue<type>::~PriorityQueue()
+template<typename T>
+PriorityQueue<T>::~PriorityQueue()
 {
 	while(back != NULL)
 	{
@@ -200,8 +198,8 @@ PriorityQueue<type>::~PriorityQueue()
 }
 
 
-template<typename type>
-PriorityQueue<type>::PriorityQueue(const PriorityQueue &pque)
+template<typename T>
+PriorityQueue<T>::PriorityQueue(const PriorityQueue &pque)
 {
 
 	if(pque.front == NULL)

@@ -17,7 +17,15 @@
 \usepackage{amstext}
 \usepackage{xcolor}
 \usepackage{url,textcomp}
+\usepackage{hyperref}
 \usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset { 
+language=C++,
+backgroundcolor=\color{black!5}, % set backgroundcolor
+basicstyle=\footnotesize,% basic font setting
+}
 
 
 
@@ -58,7 +66,7 @@ Nasz program powinien zatem:
     \item Złączyć wiadomość w jedną,prawidłową całość i wyświetlić użytkownikowi
 \end{enumerate}
 \section{Kolejka Priorytetowa}
-Wobec postawionego problemu strukturą ADT, którą wybrałem jest kolejka priorytetowa bazowana na drzewie binarnym.
+Wobec postawionego problemu strukturą ADT, którą wybrałem jest kolejka priorytetowa bazowana na liście.
 \subsection{Czym jest kolejka priorytetowa?}
 Kolejka priorytetowa (ang. priority queue) jest kolejką, w której elementy są ułożone nie w kolejności wprowadzania, lecz w kolejności priorytetu.
 Każdy element kolejki posiada dodatkowe pole priority, w którym przechowuje swój priorytet – czyli ważność.
@@ -77,18 +85,61 @@ Strukturę tą wybrałem ze względu na:
 
 \subsection{Implementacja}
 
-
-//kod klasy reszta kodu dostepna na githubie
+\begin{lstlisting}
+    template<typename T>
+    class PriorityQueue
+    {
+        typedef struct Node
+        {
+            T field; //wartosc 
+            int key; // klucz
+            Node *nextNode; 
+        } *nodePointer;
+    
+        nodePointer front; //wskaznik na nastepny element
+        nodePointer back; // wskaznik na poprzedni element
+    public:
+        PriorityQueue(); //konstruktor
+        ~PriorityQueue(); //destruktor
+        // dodanie elementu
+        void enqueue(const T& newElement, int priority); 
+        // usuniecie elementu
+        void dequeue(); 
+        // wyswietlenie kolejki w prawidlowym porzadku
+        void Print(); 
+        // sprawdzenie czy kolejka nie jest pusta
+        bool Empty(); 
+    private:
+    //metody do obslugi enqueue i dequeue
+        void pushBack(const T& newElement, int priority); 
+        void pushFront(const T& newElement, int priority);
+        void pushFirstNode(const T& newElement, int priority);
+        void pushInside(const T& newElement, int priority);
+        
+    };
+    \end{lstlisting}
+    
+Powyżej znajduję się klasa kolejki priorytowej, reszta kodu dostępna jest na 
+rezpozytorium na \href{https://github.com/Damiry0/PAMSI}{Githubie} lub dołączonym skompresowanym pliku.
 \subsection{Złożoności obliczeniowe}
 Dla naszego programu zgodnie z załozeniami projektowymi zostały obliczene złożoności czasowe poszczególnych 
 funkcji naszej struktury:
-//przykład
+
+
+\begin{figure}[H]
+    \centering
+    \hspace*{-1cm}
+    \includegraphics[totalheight=10cm]{zlozonosc.jpg}
+    \caption{Złożoność obliczeniowa dla metody enqueue}
+    \label{2}
+\end{figure}
 
 Tak przedstawia się reszta złożoności oblicziowych naszej struktury:
 //tabelka
 
-Nasze wyniki pokrywają się z danymi dostępnymi w internecie // jakiś ref // ,zatem uznaje , że kolejka
-została zaimplementowana prawidłowo.
+Nasze wyniki pokrywają się z danymi dostępnymi w internecie,jak na przykład 
+\href{https://eduinf.waw.pl/inf/alg/001_search/0106.php}{TUTAJ}. Uznaje zatem,
+że kolejka została zaimplementowana poprawnie.
 
 
 \subsection{Testy}
@@ -103,8 +154,9 @@ uznaje, że program działa prawidłowo.
 
 \section{Wnioski}
 \section{Bibliografia}
-https://bradfieldcs.com/algos/trees/priority-queues-with-binary-heaps/
-https://www.hackerearth.com/practice/notes/heaps-and-priority-queues/
+\href{https://eduinf.waw.pl/inf/alg/001_search/0106.php}{Schemat implementacji wraz z schematami blokowymi}
 
+\href{https://bradfieldcs.com/algos/trees/priority-queues-with-binary-heaps/}{Inne rozwiązanie problemu na drzewach binarnych}
 
+\href{https://www.hackerearth.com/practice/notes/heaps-and-priority-queues/}{Złożoności czasowe różnych algorytmów}
 \end{document}
