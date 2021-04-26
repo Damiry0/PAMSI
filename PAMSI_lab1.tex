@@ -41,7 +41,7 @@ basicstyle=\footnotesize,% basic font setting
 
 \tableofcontents
 \section{Wstęp}
-Grupa lab: E12-93c zmien
+Grupa lab: E12-93c 
 
 Termin zajęć: PN 18:45-20:35
 
@@ -56,14 +56,14 @@ Problem polega w tym, że pakiety mogą przychodzić z różnych przycznym w los
 Nasz program powinien zatem:
 \begin{enumerate}
     \item Podzielić naszą wiadomość na szereg pakietów
-    \item Przelosować pakiety w celu zasymulowania sytuacji
+    \item Wysłać je w losowej kolejności
     \item Wczytać do struktury danych nasze pakiety
     \item Przesyłać pakiety w foramcie [klucz,wartość]
     \begin{enumerate}
         \item klucz powininen mieć unikalną wartość
         \item wartość powinna być dowolnego typu (użytkownik powinine mieć możliwość przesłania dowolnej wiadomości)
     \end{enumerate}
-    \item Złączyć wiadomość w jedną,prawidłową całość i wyświetlić użytkownikowi
+    \item Wyświetlić użytkownikowi wiadomość w poprawnej kolejności
 \end{enumerate}
 \section{Kolejka Priorytetowa}
 Wobec postawionego problemu strukturą ADT, którą wybrałem jest kolejka priorytetowa bazowana na liście.
@@ -78,8 +78,8 @@ Elementy o priorytetach niższych zostaną pobrane dopiero wtedy, gdy zostaną u
 Strukturę tą wybrałem ze względu na:
 \begin{itemize}
     \item Łatwość implementacji
-    \item Złożoność czasową lepszą niż O(n) dla uzyskania min oraz max
     \item Dynamiczną alokację danych
+    \item Przechowywanie danych w formacie [klucz,wartość];
 \end{itemize}
 
 
@@ -137,7 +137,14 @@ funkcji naszej struktury:
 
 Złożoność została policzona również dla innych metod,co można zobaczyć w tabelce poniżej:
 
-//tabelka
+\begin{equation}
+    \begin{array}{|c|c|c|}
+    \hline \text { Dodanie } & \text { Usuniecie } & \text{Wyświetlenie} \\
+    \text { elementu } & \text { elementu} & \text{struktury}\\
+    \hline O(n) & O(n) & O(n)  \\
+    \hline
+    \end{array}
+    \end{equation}
 
 Nasze wyniki pokrywają się z danymi dostępnymi w internecie,jak na przykład 
 \href{https://eduinf.waw.pl/inf/alg/001_search/0106.php}{TUTAJ}. Uznaje zatem,
@@ -150,9 +157,9 @@ użytkownika A pakiety w złej kolejności.
 
 \begin{figure}[H]
     \centering
-    \hspace*{-1cm}
-    \includegraphics[totalheight=8cm]{zlozonosc.jpg}
-    \caption{Złożoność obliczeniowa dla metody enqueue}
+    \hspace*{-4cm}
+    \includegraphics[totalheight=7cm]{PQ1.png}
+    \caption{Test programu dla stringów}
     \label{2}
 \end{figure}
 
@@ -162,8 +169,8 @@ poniższym screenie:
 \begin{figure}[H]
     \centering
     \hspace*{-1cm}
-    \includegraphics[totalheight=8cm]{zlozonosc.jpg}
-    \caption{Złożoność obliczeniowa dla metody enqueue}
+    \includegraphics[totalheight=7cm]{PQ2.png}
+    \caption{Test programu dla intów}
     \label{2}
 \end{figure}
 
@@ -171,6 +178,9 @@ poniższym screenie:
 Program finalnie przeszedł testy, zatem uznaje, że program działa prawidłowo.
 
 \section{Wnioski}
+Udało nam się zrealizować przedstawiony problem, to co możnaby w nim poprawić
+    to zastosowanie innej wersji kolejki priorytetowej w celu ulepszenia Złożoności
+    czasowej naszej struktury ADT, co wiąże się z większą trudnością implementacji.
 \section{Bibliografia}
 \href{https://eduinf.waw.pl/inf/alg/001_search/0106.php}{Schemat implementacji wraz z schematami blokowymi}
 
