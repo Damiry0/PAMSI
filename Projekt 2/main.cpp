@@ -1,10 +1,17 @@
 #include <iostream>
+#include <vector>
 
-using namespace std;
+
+std::vector<int> LoadFromFile()
+{
+
+}
 
 
 int main ()
 {
+
+
 
     return 0;
 }
