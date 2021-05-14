@@ -20,3 +20,5 @@ CMakeLists.txt
 *.fls
 *.log
 mcode.sty
+*.exe
+**/.vscode
