@@ -5,7 +5,7 @@
   <p align="center">
     Projektowanie Algorytmów i Metod Sztucnej Inteligencji
     <p align="center"> <strong> Design of Algorithms and Artificial Intelligence Methods </strong></p>
-    · <p align="center">
+    <p align="center">
     <a align="center" href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
     ·
     <a algn="center" href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
@@ -21,17 +21,20 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="###The main objectives of the course:">Main Objectives</a></li>
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#getting-started">Projects</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#prerequisites">Project 1</a></li>
+        <li><a href="#prerequisites">Project 2</a></li>
+        <li><a href="#prerequisites">Project 3</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#usage">Build With</a></li>
+    <li><a href="#usage">Licence</a></li>
+    <li><a href="#usage">Contact</a></li>
   </ol>
 </details>
 
@@ -68,14 +71,6 @@ ethics of searching for information in scientific literature and using instrumen
 edi programming.
 
 
-
-### Built With
-As the objective of the course was to learn the patterns behind commonly used I used low-level programming that allows me to manually take care of all the operations. It was supported with Qt that allowed me to create window type application for better visual experience.
-* [C++](https://getbootstrap.com)
-* [Qt](https://jquery.com)
-
-
-
 <!-- GETTING STARTED -->
 ## Project 1
 
@@ -103,6 +98,11 @@ The last project involved creating a simple game to which we had to implement a 
 TODO
 
 
+### Built With
+As the objective of the course was to learn the patterns behind commonly used I used low-level programming that allows me to manually take care of all the operations. It was supported with Qt that allowed me to create window type application for better visual experience.
+* [C++](https://getbootstrap.com)
+* [Qt](www.qt.io)
+
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
@@ -113,7 +113,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact
 
 You can find me on my:
-[lidenkid] Lindedin
-[Github] 
-
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+[Linkedin](https://www.linkedin.com/in/damian.rys)
+[Github](https://www.github.com/damiry0)
+[E-mail](damian.rys0@gmail.com)
