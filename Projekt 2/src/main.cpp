@@ -1,36 +1,10 @@
 #include <iostream>
 #include <vector>
-#include <cmath>
 #include <fstream>
 #include <string>
+#include <chrono>
 
-typedef struct movie
-{
-    int id;
-    std::string title;
-    int rating;
-    movie() :id(0),rating(0){}
-}movie;
-
-
-void LoadFromFile(std::string filename, movie arr[])
-{
-    std::fstream file(filename);
-    auto i = 0;
-    std::string temp;
-    if (file.is_open())
-    {
-        while (!file.eof())
-        {
-            std::getline(file, temp, ','); arr[i].id =(int) std::stof(temp);
-            std::getline(file, temp, ','); arr[i].title = temp;
-            std::getline(file, temp, '\n'); arr[i].rating = (int)std::stof(temp);
-            ++i;
-        }
-    }
-    else { std::cout << "File not found."; }
-    file.close();
-}
+#include "Sort.h"
 
 
 enum class CSVState {
@@ -39,15 +13,173 @@ enum class CSVState {
     QuotedQuote
 };
 
+std::vector<std::string> readCSVRow(const std::string& row);
+std::vector<std::vector<std::string>> readCSV(std::istream& in);
+void ParseCSV(const std::string& csvSource, std::vector<std::vector<std::string> >& lines);
+
+void bucketSort(int arr[], int arrSize) {
+    
+    int maximum_value = 0;
+    for (int i = 0; i < arrSize; ++i) {
+        if (arr[i] > maximum_value) {
+            maximum_value = arr[i];
+        }
+    }
+    auto bucket_vector = std::vector<unsigned >(static_cast<unsigned int>(maximum_value + 1));
+    for (int i = 0; i < arrSize; ++i) {
+        bucket_vector[arr[i]]++;
+    }
+    int count = 0;
+    for (int i = 0; i < bucket_vector.capacity(); ++i) {
+        for (int j = 0; j < bucket_vector[i]; ++j) {
+            arr[count] = i;
+            count++;
+        }
+    }
+}
+
+
+
+
+int main()
+{
+    using std::chrono::high_resolution_clock;
+    using std::chrono::duration_cast;
+    using std::chrono::duration;
+    using std::chrono::milliseconds;
+
+	
+    std::string sourceFilePath = "C:\\Users\\damir\\Documents\\GitHub\\PAMSI\\Projekt 2\\data\\projekt2_dane.csv";
+    std::fstream filename(sourceFilePath);
+	
+    auto vec=readCSV(filename);
+    long ArraySize[]{ 10000,100000,500000,962900 };
+
+    
+	//MergeSort
+    int** arrayOfMergeArrays = new int* [4];
+    for (int i = 0; i < 4; i++)
+    {
+        arrayOfMergeArrays[i] = new int[ArraySize[i]];
+    }
+    
+    for (int j = 0; j < 4; j++)
+    {
+        std::cout << "Started sorting \n";
+        long count = 0;
+        for (int i = 0; i < ArraySize[j]; i++)
+        {
+            if (vec[i][2].empty()) vec[i][2] = "5";
+            arrayOfMergeArrays[j][i] = stoi(vec[i][2]);
+            count = count + arrayOfMergeArrays[j][i];
+        }
+        auto t1 = high_resolution_clock::now();
+        quickSort(arrayOfMergeArrays[j], 0, ArraySize[j] - 1);
+        auto t2 = high_resolution_clock::now();
+        auto ms_double = t2 - t1;
+        std::cout << "MergeSort time for " << ArraySize[j] << ":" << ms_double.count() << "ms \n";
+        std::cout << "Mediana " << arrayOfMergeArrays[j][ArraySize[j] / 2] << "\n";
+        std::cout << "Srednia wartość" << (double)count / (double)ArraySize[j] << "\n";
+        delete[] arrayOfMergeArrays[j];
+    }
+    std::cout << "\n";
+
+	//QuickSort
+    int** arrayOfArrays = new int* [4];
+    for (int i = 0; i < 4; i++)
+    {
+        arrayOfArrays[i] = new int[ArraySize[i]];
+        long count = 0;
+    }
+    for (int j = 0; j < 4; j++)
+    {
+        std::cout << "Started sorting \n";
+        long count = 0;
+        for (int i = 0; i < ArraySize[j]; i++)
+        {
+            if (vec[i][2].empty()) vec[i][2] = "5";
+            arrayOfArrays[j][i] = stoi(vec[i][2]);
+            count = count + arrayOfArrays[j][i];
+        }
+        auto t1 = high_resolution_clock::now();
+        quickSort(arrayOfArrays[j], 0, ArraySize[j] - 1);
+        auto t2 = high_resolution_clock::now();
+        auto ms_double = t2 - t1;
+        std::cout << "QuickSort time for " << ArraySize[j] << ":" << ms_double.count() << "ms \n";
+        std::cout << "Mediana:" << arrayOfArrays[j][ ArraySize[j]/2]<<"\n";
+        std::cout << "Srednia wartosc:" << (double)count / (double) ArraySize[j] << "\n";
+        delete[] arrayOfArrays[j];
+    }
+    std::cout << "\n";
+	
+	//BucketSort
+    int** arrayOfArraysBucket = new int* [4];
+    for (int i = 0; i < 4; i++)
+    {
+        arrayOfArraysBucket[i] = new int[ArraySize[i]];
+    }
+
+    for (int j = 0; j < 4; j++)
+    {
+        long count = 0;
+        std::cout << "Started sorting \n";
+        for (int i = 0; i < ArraySize[j]; i++)
+        {
+            if (vec[i][2].empty()) vec[i][2] = "5";
+            arrayOfArraysBucket[j][i] = stoi(vec[i][2]);
+            count = count + arrayOfArraysBucket[j][i];
+        }
+        auto t1 = high_resolution_clock::now();
+        bucketSort(arrayOfArraysBucket[j], ArraySize[j]);
+        auto t2 = high_resolution_clock::now();
+        auto ms_double = t2 - t1;
+        std::cout << "BucketSort time for " << ArraySize[j] << ":" << ms_double.count() << "ms \n";
+        std::cout << "Mediana:" << arrayOfArraysBucket[j][ArraySize[j] / 2] << "\n";
+        std::cout << "Srednia wartosc:" << (double)count / (double)ArraySize[j] << "\n";
+        delete[] arrayOfArraysBucket[j];
+    }
+	
+	//IntroSort
+    int** arrayOfArraysIntro = new int* [4];
+    for (int i = 0; i < 4; i++)
+    {
+        arrayOfArraysIntro[i] = new int[ArraySize[i]];
+    }
+
+    for (int j = 0; j < 4; j++)
+    {
+        long count = 0;
+        std::cout << "Started sorting \n";
+        for (int i = 0; i < ArraySize[j]; i++)
+        {
+            if (vec[i][2].empty()) vec[i][2] = "5";
+            arrayOfArraysIntro[j][i] = stoi(vec[i][2]);
+            count = count + arrayOfArraysIntro[j][i];
+        }
+        auto t1 = high_resolution_clock::now();
+        introSort(arrayOfArraysIntro[j],arrayOfArraysIntro[j], arrayOfArraysIntro[j]+(ArraySize[j]) - 1  );
+        auto t2 = high_resolution_clock::now();
+        auto ms_double = t2 - t1;
+        std::cout << "IntroSort time for " << ArraySize[j] << ":" << ms_double.count() << "ms \n";
+        std::cout << "Mediana:" << arrayOfArraysIntro[j][ArraySize[j] / 2] << "\n";
+        std::cout << "Srednia wartosc:" << (double)count / (double)ArraySize[j] << "\n";
+        delete[] arrayOfArraysIntro[j];
+    }
+    //licbza pustych 47.389
+
+}
+
+
+
 std::vector<std::string> readCSVRow(const std::string& row) {
     CSVState state = CSVState::UnquotedField;
     std::vector<std::string> fields{ "" };
-    size_t i = 0; // index of the current field
+    size_t i = 0;
     for (char c : row) {
         switch (state) {
         case CSVState::UnquotedField:
             switch (c) {
-            case ',': // end of field
+            case ',':
                 fields.push_back(""); i++;
                 break;
             case '"': state = CSVState::QuotedField;
@@ -66,11 +198,11 @@ std::vector<std::string> readCSVRow(const std::string& row) {
             break;
         case CSVState::QuotedQuote:
             switch (c) {
-            case ',': // , after closing quote
+            case ',':
                 fields.push_back(""); i++;
                 state = CSVState::UnquotedField;
                 break;
-            case '"': // "" -> "
+            case '"':
                 fields[i].push_back('"');
                 state = CSVState::QuotedField;
                 break;
@@ -84,7 +216,6 @@ std::vector<std::string> readCSVRow(const std::string& row) {
     return fields;
 }
 
-/// Read CSV file, Excel dialect. Accept "quoted fields ""with quotes"""
 std::vector<std::vector<std::string>> readCSV(std::istream& in) {
     std::vector<std::vector<std::string>> table;
     std::string row;
@@ -97,22 +228,4 @@ std::vector<std::vector<std::string>> readCSV(std::istream& in) {
         table.push_back(fields);
     }
     return table;
-}
-
-
-
-int main()
-{
-    std::cout << "dupa";
-    long const count = 100;
-    auto* arr = new movie[count];
-    LoadFromFile("C:\\Users\\damir\\Documents\\GitHub\\PAMSI\\Projekt 2\\data\\projekt2_dane.csv", arr);
-    std::cout << "dupa";
-    for (size_t i = 0; i <= count; i = i++)
-    {
-        std::cout << "dupa";
-        std::cout << "Id=" << arr[i].id << " " << "tile=" << arr[i].title << " " << "rating=" << arr[i].rating << "\n";
-    }
-    delete[] arr;
-    return 0;
 }
