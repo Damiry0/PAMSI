@@ -93,10 +93,7 @@ TODO add photos:
 
 ## Project 3
 
-The last project involved creating a simple game to which we had to implement a artificial inteligence. I decided to create a tic tac toe game with MinMax Algorithm with Alpha-Beta prunings. Thanks to efficient implementation bot was able to handle boards up to 10x10 with never losing to human player and taking initiative when it spotted a mistake of player making it the toughests enemy to play against. Below you can see results of my work:
-
-TODO
-
+The last project involved creating a simple game to which we had to implement a artificial inteligence. I decided to create a tic tac toe game with MinMax Algorithm with Alpha-Beta prunings. Program is available [HERE](https://github.com/Damiry0/TicTacToe).
 
 ### Built With
 As the objective of the course was to learn the patterns behind commonly used I used low-level programming that allows me to manually take care of all the operations. It was supported with Qt that allowed me to create window type application for better visual experience.
@@ -113,6 +110,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact
 
 You can find me on my:
-[Linkedin](https://www.linkedin.com/in/damian.rys)
+[Linkedin](https://www.linkedin.com/in/damian-rys)
 [Github](https://www.github.com/damiry0)
 [E-mail](damian.rys0@gmail.com)
